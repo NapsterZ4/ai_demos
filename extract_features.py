@@ -13,7 +13,8 @@ def normalize_histograms(im):  # normalizes the histogram of images
         # print(minval,maxval)
         imrange = maxval - minval
         im1[:, :, i] = (255 / (imrange + 0.0001) * (
-                imi - minval))  # imi-minval will turn the color range between 0-imrange, and the scaleing will stretch the range between 0-255
+                imi - minval))  # imi-minval will turn the color range between 0-imrange, and the scaleing will
+        # stretch the range between 0-255
     return im1
 
 
@@ -24,7 +25,7 @@ def normalize_histograms(im):  # normalizes the histogram of images
 ######################################################################
 
 def read_and_process_image(filename):
-    path = "/mnt/napster_disk/ai_projects/demos/breast_cancer/analizer.png"
+    path = "/mnt/napster_disk/ai_projects/ai_models/analizer.png"
     im_array = np.array(filename)
     cv2.imwrite(path, cv2.cvtColor(im_array, cv2.COLOR_RGB2BGR))
     im = cv2.imread(path)
@@ -46,14 +47,10 @@ def read_and_process_image(filename):
         crop = normalize_histograms(crop)
         return crop
     else:
-        return (normalize_histograms(im))
-
-
-##################################################################################
-#### The following functions are for extracting features from the images #########
-##################################################################################
+        return normalize_histograms(im)
 
 # histogram statistics (mean, standard deviations, energy, entropy, log-kurtosis)
+
 
 def histogram_statistics(hist):
     # hist= cv2.calcHist([gr],[0],None,[256],[0,256])

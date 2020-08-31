@@ -7,7 +7,7 @@ from extract_features import various_features
 
 width = 700
 
-ml_model = load_model('/mnt/napster_disk/ai_projects/demos/breast_cancer/breast_cancer_model')
+ml_model = load_model('/mnt/napster_disk/ai_projects/ai_models/breast_cancer/breast_cancer_model')
 
 
 def ml_breast_cancer_model():
@@ -22,7 +22,7 @@ def ml_breast_cancer_model():
         image_processing = various_features(image_ml)
         df_image_processing = pd.DataFrame(image_processing)
         predictions = predict_model(ml_model, df_image_processing)
-        os.remove("/mnt/napster_disk/ai_projects/demos/breast_cancer/analizer.png")
+        os.remove("/mnt/napster_disk/ai_projects/demos/analizer.png")
         result = int(predictions['Label'])
         score = float(predictions['Score'])
 
